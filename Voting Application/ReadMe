@@ -1,0 +1,7 @@
+Expose creted deployments using below commands
+
+
+$ kubectl expose deployment --namespace=vote redis-deployment --port=6379 --target-port=6379 --name=redis
+
+
+$ kubectl expose deployment --namespace=vote db-deployment --port=5432 --target-port=5432 --name=db
