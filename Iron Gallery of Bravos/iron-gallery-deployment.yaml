@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: iron-gallery
+  name: iron-gallery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: iron-gallery
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: iron-gallery
+    spec:
+      containers:
+      - image: kodekloud/irongallery:2.0
+        name: iron-gallery
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "50m"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: 'Braavo'
+        - name: MYSQL_DATABASE
+          value: 'lychee'
+        - name: MYSQL_USER
+          value: 'lychee'
+        - name: MYSQL_PASSWORD
+          value: 'lychee'
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/data
+          name: config
+        - mountPath: /usr/share/nginx/html/uploads
+          name: images
+      volumes:
+      - name: config
+        emptyDir: {}
+      - name: images
+        emptyDir: {}
+status: {}
