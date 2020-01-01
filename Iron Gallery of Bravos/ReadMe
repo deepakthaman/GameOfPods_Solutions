@@ -1,0 +1,5 @@
+Expose created deployments using below commands
+
+>> kubectl expose deployment iron-gallery --name=iron-gallery-service --target-port=80 --port=80
+
+>> kubectl expose deployment iron-db --name=iron-db-service --target-port=3306 --port=3306
